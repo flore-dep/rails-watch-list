@@ -1,0 +1,11 @@
+<div class="container">
+
+  <h1> Watchlists </h1>
+
+  <%= link_to 'Create a list', new_list_path %>
+
+  <%@lists.each do |list| %>
+    <p> <%= link_to list.name, list_path(list) %> <%= list.bookmarks.count %></p>
+  <% end %>
+
+</div>
