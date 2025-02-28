@@ -3,12 +3,20 @@
 
   <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
 
-  <%@list.bookmarks.each do |bookmark| %>
-    <% movie = Movie.find(bookmark.movie_id) %>
-    <p> <%= movie.title %></p>
-    <p> <%= movie.overview %></p>
-    <img src= <%= movie.poster_url %>  alt=<%= movie.title %>>
-    <p> <%= bookmark.comment %></p>
-    <p> <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %><p>
-  <% end %>
+  <div class="d-flex flex-wrap">
+    <%@list.bookmarks.each do |bookmark| %>
+        <% movie = Movie.find(bookmark.movie_id) %>
+          <div class="movie-card m-2">
+                <div class=""><img src= <%= movie.poster_url %>  alt=<%= movie.title %>></div>
+            <div class="movie-card-infos display-none">
+                <div class='card-body m-2'>
+                  <h5 class='card-title p-1'> <%= movie.title %></h5>
+                  <p class='card-text p-1'> <%= movie.overview %></p>
+                  <blockquote> <%= bookmark.comment %></blockquote>
+                  <%= link_to 'Delete', bookmark_path(bookmark), class:'btn btn-secondary',data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+  </div>
 </div>

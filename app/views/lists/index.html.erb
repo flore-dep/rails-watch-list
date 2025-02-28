@@ -11,7 +11,12 @@
   <div></div>
     <%@lists.each do |list| %>
       <div class='list-item p-2 m-2'>
-      <%= link_to list.name, list_path(list), class:'text-decoration-none text-black' %> <%= list.bookmarks.count %>
+      <%# <% if list.photo.attached? %>
+        <%# <% cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+      <%# <% end %>
+       <%= link_to list.name, list_path(list), class:'text-decoration-none text-black' %> <%= list.bookmarks.count %>
+      </div>
+      <div class="list-movie">
       </div>
     <% end %>
   </div>
