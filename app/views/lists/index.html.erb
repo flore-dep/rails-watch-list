@@ -2,10 +2,18 @@
 
   <h1> Watchlists </h1>
 
-  <%= link_to 'Create a list', new_list_path %>
-
-  <%@lists.each do |list| %>
-    <p> <%= link_to list.name, list_path(list) %> <%= list.bookmarks.count %></p>
+<div class="d-flex justify-content-end">
+  <%= link_to new_list_path do %>
+    <i class="fa-solid fa-plus fs-3"></i>
   <% end %>
+</div>
+
+  <div></div>
+    <%@lists.each do |list| %>
+      <div class='list-item p-2 m-2'>
+      <%= link_to list.name, list_path(list), class:'text-decoration-none text-black' %> <%= list.bookmarks.count %>
+      </div>
+    <% end %>
+  </div>
 
 </div>
